@@ -36,10 +36,3 @@
   from = "/esperanza"
   to = "/.netlify/functions/esperanza"
   status = 200
-
-# Environment-specific settings
-[context.production]
-  command = "npm ci"
-
-[context.deploy-preview]
-  command = "npm install"
