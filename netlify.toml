@@ -7,16 +7,39 @@
   node_bundler = "zisi"
   external_node_modules = ["@anthropic-ai/sdk"]
 
+# Security headers for main site
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
+# CORS headers for API functions
 [[headers]]
   for = "/.netlify/functions/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Headers = "Content-Type"
-    Access-Control-Allow-Methods = "POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    Access-Control-Allow-Methods = "POST, OPTIONS, GET"
+    Access-Control-Max-Age = "86400"
+
+# Redirect rules for clean URLs
+[[redirects]]
+  from = "/maya"
+  to = "/.netlify/functions/maya"
+  status = 200
+
+[[redirects]]
+  from = "/esperanza"
+  to = "/.netlify/functions/esperanza"
+  status = 200
+
+# Environment-specific settings
+[context.production]
+  command = "npm ci"
+
+[context.deploy-preview]
+  command = "npm install"
