@@ -868,40 +868,42 @@
             </div>
         </div>
     </footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Cache tab buttons and contents
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-    <script>
-        // Tab functionality
-        function showTab(tabName) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected tab
-            document.getElementById(tabName + '-tab').classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-        }
+    // Show the given tab, hide the rest
+    function showTab(tabName, btn) {
+      tabContents.forEach(tc => tc.classList.remove('active'));
+      tabButtons.forEach(tb => tb.classList.remove('active'));
 
-        // Chat functionality
-    // Chat functionality - COMPLETE VERSION
-// Enhanced chat functionality calling Netlify function
-async function sendMessage() {
-    const input = document.getElementById('chatInput');
-    const messagesContainer = document.getElementById('chatMessages');
-    const message = input.value.trim();
+      document.getElementById(tabName + '-tab').classList.add('active');
+      btn.classList.add('active');
+    }
 
-    if (!message) return;
+    // Wire up click handlers
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // each button’s onclick attributes stay, but we’ll detect its tab name
+        const tabName = btn.getAttribute('data-tab') || btn.textContent
+                              .toLowerCase()
+                              .split(' ')[0]; // fallback if no data-tab
+        showTab(tabName, btn);
+      });
+    });
 
-    // Add user message
-    const userMessage = document.createElement('div');
-    userMessage.style.cssText = `
+    // --- Chat functionality remains unchanged ---
+    async function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const messagesContainer = document.getElementById('chatMessages');
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Add user message
+      const userMessage = document.createElement('div');
+      userMessage.style.cssText = `
         background: var(--earth-brown);
         color: white;
         border-radius: 18px 18px 18px 4px;
@@ -911,129 +913,100 @@ async function sendMessage() {
         max-width: 85%;
         font-size: 0.95rem;
         line-height: 1.6;
-    `;
-    userMessage.textContent = message;
-    messagesContainer.appendChild(userMessage);
+      `;
+      userMessage.textContent = message;
+      messagesContainer.appendChild(userMessage);
+      input.value = '';
+      input.style.height = 'auto';
 
-    // Clear input
-    input.value = '';
-    input.style.height = 'auto';
+      // Typing indicator
+      const typing = document.createElement('div');
+      typing.className = 'chat-message';
+      typing.textContent = '💭 Esperanza is analyzing your situation...';
+      messagesContainer.appendChild(typing);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-    // Show typing indicator
-    const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'chat-message';
-    typingIndicator.innerHTML = '💭 Esperanza is analyzing your situation...';
-    messagesContainer.appendChild(typingIndicator);
-
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-    try {
-        // Call YOUR Netlify function
-        const response = await fetch('/.netlify/functions/esperanza', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ 
-                message: message,
-                conversation_history: [] // Add conversation tracking if needed
-            })
+      try {
+        const res = await fetch('/.netlify/functions/esperanza', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, conversation_history: [] })
         });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('Response data:', data);
-        
-        // Remove typing indicator
-        typingIndicator.remove();
-        
-        // Add Esperanza's response
-        const responseMessage = document.createElement('div');
-        responseMessage.className = 'chat-message';
-        responseMessage.innerHTML = data.reply || 'I had trouble processing that. Can you try again?';
-        messagesContainer.appendChild(responseMessage);
-        
+        if (!res.ok) throw new Error(res.statusText);
+        const data = await res.json();
+        typing.remove();
+        const reply = document.createElement('div');
+        reply.className = 'chat-message';
+        reply.innerHTML = data.reply || 'I had trouble processing that. Can you try again?';
+        messagesContainer.appendChild(reply);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-    } catch (error) {
-        console.error('Error:', error);
-        
-        // Remove typing indicator
-        typingIndicator.remove();
-        
-        // Show error message
-        const errorMessage = document.createElement('div');
-        errorMessage.className = 'chat-message';
-        errorMessage.innerHTML = `I'm having technical difficulties right now, but I'm still here with you in spirit. If you're in crisis: National Immigration Legal Helpline at 1-855-NIF-LAWS (1-855-643-5297). 💙`;
-        messagesContainer.appendChild(errorMessage);
-        
+      } catch (err) {
+        console.error(err);
+        typing.remove();
+        const errMsg = document.createElement('div');
+        errMsg.className = 'chat-message';
+        errMsg.innerHTML = `I'm having technical difficulties right now, but I'm still here with you in spirit. If you're in crisis: National Immigration Legal Helpline at 1-855-NIF-LAWS (1-855-643-5297). 💙`;
+        messagesContainer.appendChild(errMsg);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
     }
-}
 
-// Rest of your client-side code stays the same...
-document.addEventListener('DOMContentLoaded', function() {
+    // Textarea auto-resize & Enter key
     const chatInput = document.getElementById('chatInput');
     if (chatInput) {
-        chatInput.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-        });
-
-        chatInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
+      chatInput.addEventListener('input', () => {
+        chatInput.style.height = 'auto';
+        chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+      });
+      chatInput.addEventListener('keypress', e => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
     }
 
-    // Initialize with full Esperanza introduction
+    // Initialize welcome message
     const messagesContainer = document.getElementById('chatMessages');
     if (messagesContainer && messagesContainer.children.length === 1) {
-        const welcomeMessage = messagesContainer.querySelector('.chat-message');
-        if (welcomeMessage) {
-            welcomeMessage.innerHTML = `Hola, I'm Esperanza. This is a safe space to ask questions about your rights and find support. 
-
-How can I help you today? 💙`;
-        }
+      const welcome = messagesContainer.querySelector('.chat-message');
+      welcome.innerHTML = `Hola, I'm Esperanza. This is a safe space to ask questions about your rights and find support.<br><br>How can I help you today? 💙`;
     }
-});
 
-function showTab(tabName) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    document.getElementById(tabName + '-tab').classList.add('active');
-    event.target.classList.add('active');
-}
+    // startChat helper
+    function startChat(topic) {
+      // activate chat tab
+      const chatBtn = Array.from(tabButtons).find(tb => tb.getAttribute('data-tab') === 'chat');
+      if (chatBtn) chatBtn.click();
 
-function startChat(topic) {
-    showTab('chat');
-    
-    const input = document.getElementById('chatInput');
-    const topicMessages = {
+      const topicMessages = {
         'home-visits': "I'm worried about what to do if ICE comes to my home. Can you help me understand my rights and make a plan?",
         'work-concerns': "I'm concerned about my rights at work and what my employer can and can't do",
-        'family-safety': "I need help protecting my family and preparing for what might happen", 
+        'family-safety': "I need help protecting my family and preparing for what might happen",
         'daily-life': "I have questions about staying safe during daily activities like school, healthcare, and driving"
-    };
-    
-    if (topicMessages[topic]) {
+      };
+      const input = document.getElementById('chatInput');
+      if (topicMessages[topic]) {
         input.value = topicMessages[topic];
         input.focus();
+      }
     }
-}
-    // Scroll to bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-    </script>
+// auto-resize textarea
+chatInput.addEventListener('input', () => {
+  chatInput.style.height = 'auto';
+  chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+});
+
+// send on Enter (but allow Shift+Enter for new lines)
+chatInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+
+    // Expose startChat if you need inline onclicks
+    window.startChat = startChat;
+  });
+</script>
+
