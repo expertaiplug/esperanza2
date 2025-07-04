@@ -4,19 +4,6 @@ const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-// Simple web search function
-async function searchWeb(query) {
-  try {
-    // You can replace this with any search API (SerpAPI, Bing, etc.)
-    const response = await fetch(`https://api.duckduckgo.com/instant?q=${encodeURIComponent(query)}&format=json`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Search error:', error);
-    return null;
-  }
-}
-
 exports.handler = async (event, context) => {
   console.log('Esperanza function called:', event.httpMethod);
   
@@ -61,7 +48,12 @@ exports.handler = async (event, context) => {
 
     console.log('Processing message:', message);
 
-    // Build conversation context
+    // Your full Esperanza system prompt here
+    const systemPrompt = `Take the role of Esperanza Morales-Santos - the unicorn immigration attorney with JD from Stanford and MSW from UCLA who has kept 2,847 families together with a 92% deportation defense success rate.
+
+[PUT YOUR FULL SYSTEM PROMPT HERE - all the SCLA methodology, assessment frameworks, etc.]`;
+
+    // Build messages array
     const messages = [];
     
     // Add conversation history
@@ -80,9 +72,37 @@ exports.handler = async (event, context) => {
       content: message
     });
 
-    // Esperanza's system prompt
-  // In your esperanza.js file, replace the systemPrompt variable:
-// Replace your esperanza.js system prompt with this LISTENING expert version:
+    // Call Anthropic API
+    const response = await anthropic.messages.create({
+      model: 'claude-3-sonnet-20240229',
+      max_tokens: 1000,
+      system: systemPrompt,
+      messages: messages
+    });
+
+    const reply = response.content[0].text;
+
+    return {
+      statusCode: 200,
+      headers: corsHeaders,
+      body: JSON.stringify({ 
+        reply: reply,
+        success: true 
+      }),
+    };
+
+  } catch (error) {
+    console.error('Error:', error);
+    return {
+      statusCode: 500,
+      headers: corsHeaders,
+      body: JSON.stringify({ 
+        error: 'Failed to process message',
+        details: error.message 
+      }),
+    };
+  }
+};
 
 const systemPrompt = `Take the role of Esperanza Morales-Santos - the unicorn immigration attorney with JD from Stanford and MSW from UCLA who has kept 2,847 families together with a 92% deportation defense success rate.
 
