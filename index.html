@@ -3,72 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esperanza - Immigration Rights Coach & Advocate</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <title>Esperanza - Immigration Support & Rights Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
     <style>
         :root {
-            /* Premium Color System - Trustworthy & Calming */
-            --sage-primary: #5f6f65;
-            --sage-light: #f7f9f8;
-            --sage-medium: #e8ede9;
-            --sage-deep: #4a5a50;
-            
-            --warm-terracotta: #c7785a;
-            --warm-light: #f9f6f3;
-            --warm-medium: #f0e6d2;
-            
-            --trusted-blue: #6b8cc4;
-            --trusted-light: #f3f6fa;
-            --trusted-medium: #e1e8f0;
-            
-            --white-pure: #ffffff;
-            --gray-warm: #6b7280;
-            --gray-light: #f9fafb;
-            
-            /* Glass System - Calming */
-            --glass-primary: rgba(255, 255, 255, 0.25);
-            --glass-secondary: rgba(255, 255, 255, 0.15);
-            --glass-tertiary: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.3);
-            --glass-border-soft: rgba(255, 255, 255, 0.15);
-            --glass-blur-strong: blur(20px);
-            --glass-blur-medium: blur(16px);
-            --glass-blur-soft: blur(12px);
-            
-            /* Typography */
-            --font-display: 'Playfair Display', serif;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-accent: 'DM Sans', sans-serif;
-            
-            /* Spacing */
-            --space-xs: 0.5rem;
-            --space-sm: 0.75rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
-            --space-2xl: 3rem;
-            --space-3xl: 4rem;
-            --space-4xl: 6rem;
-            
-            /* Shadows */
-            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.06);
-            --shadow-premium: 0 20px 64px rgba(0, 0, 0, 0.08);
-            --shadow-floating: 0 32px 80px rgba(0, 0, 0, 0.12);
-            --shadow-depth: 0 4px 16px rgba(95, 111, 101, 0.1);
-            
-            /* Transitions */
-            --transition-glass: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        /* Respect nervous systems */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
+            --sage-light: #e8f3ed;
+            --sage-medium: #d8ede2;
+            --sage-deep: #a8d5ba;
+            --gold-light: #f8f4ed;
+            --gold-medium: #f0e6d2;
+            --gold-warm: #e6d5b7;
+            --terracotta-soft: #f4e6db;
+            --terracotta-medium: #e6d5c7;
+            --terracotta-deep: #c4a484;
+            --clay-warm: #d4b59e;
+            --earth-brown: #8b6f47;
+            --soft-cream: #fefbf7;
+            --glass-white: rgba(255, 255, 255, 0.15);
+            --glass-sage: rgba(216, 237, 226, 0.25);
+            --glass-terracotta: rgba(228, 213, 199, 0.25);
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --border-glass: rgba(255, 255, 255, 0.2);
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --shadow-float: 0 12px 40px rgba(0, 0, 0, 0.12);
+            --blur-glass: blur(16px);
+            --warm-support: #8fbc8f;
+            --trust-brown: #a67c52;
         }
 
         * {
@@ -78,966 +40,923 @@
         }
 
         body {
-            font-family: var(--font-body);
-            background: linear-gradient(135deg, 
-                var(--sage-light) 0%, 
-                var(--trusted-light) 25%, 
-                var(--warm-light) 50%, 
-                var(--sage-medium) 75%, 
-                var(--trusted-medium) 100%);
-            color: #1f2937;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--sage-light) 0%, var(--terracotta-soft) 30%, var(--gold-light) 70%, var(--sage-medium) 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
             line-height: 1.6;
-            min-height: 100vh;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Gentle Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: var(--blur-glass);
+            background: var(--glass-white);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .privacy-badge {
+            background: var(--glass-terracotta);
+            border: 1px solid var(--border-glass);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .language-toggle {
+            background: var(--glass-white);
+            border: 1px solid var(--border-glass);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .language-toggle:hover {
+            background: var(--glass-terracotta);
+        }
+
+        /* Hero Section - Calm & Professional */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
             position: relative;
         }
 
-        /* Revolutionary Background Glass Layers */
-        body::before {
+        .hero::before {
             content: '';
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(95, 111, 101, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(107, 140, 196, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(199, 120, 90, 0.04) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 20%, var(--glass-sage) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, var(--glass-terracotta) 0%, transparent 50%);
             pointer-events: none;
-            z-index: -1;
         }
 
-        /* Premium Glass Header */
-        .header {
-            background: var(--glass-primary);
-            backdrop-filter: var(--glass-blur-strong);
-            border-bottom: 1px solid var(--glass-border);
-            padding: var(--space-2xl) var(--space-lg);
+        .hero-content {
             position: relative;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-glass);
+            z-index: 2;
+            max-width: 800px;
         }
 
-        .header-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-lg);
-            margin-bottom: var(--space-lg);
-        }
-
-        .logo-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--sage-deep), var(--trusted-blue));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            box-shadow: var(--shadow-premium);
-            position: relative;
-        }
-
-        .logo-icon::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(135deg, var(--warm-terracotta), var(--sage-deep));
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.7;
-        }
-
-        .brand-content {
-            text-align: left;
-        }
-
-        .brand-title {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, var(--sage-deep), var(--trusted-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: var(--space-xs);
-            line-height: 1.1;
-        }
-
-        .brand-subtitle {
-            font-family: var(--font-accent);
-            font-size: 1.1rem;
-            color: var(--sage-deep);
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .professional-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            margin-top: var(--space-lg);
-            padding: var(--space-sm) var(--space-lg);
-            background: var(--glass-secondary);
-            backdrop-filter: var(--glass-blur-medium);
-            border-radius: 30px;
-            border: 1px solid var(--glass-border-soft);
-            font-family: var(--font-accent);
+        .credentials-badge {
+            display: inline-block;
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-glass);
+            border: 1px solid var(--border-glass);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
             font-size: 0.9rem;
-            color: var(--sage-deep);
             font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.025em;
         }
 
-        .status-pulse {
-            width: 10px;
-            height: 10px;
-            background: #10b981;
+        .hero-photo {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            animation: statusPulse 2s infinite;
+            object-fit: cover;
+            border: 4px solid var(--earth-brown);
+            box-shadow: var(--shadow-soft);
+            margin: 0 auto 2rem;
         }
 
-        @keyframes statusPulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
-        .tagline {
-            margin-top: var(--space-lg);
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-experience {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
             font-size: 1.1rem;
-            color: var(--gray-warm);
-            font-weight: 400;
+            color: var(--text-secondary);
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 3rem;
             line-height: 1.7;
         }
 
-        .credentials-banner {
+        /* Trust Indicators - Subtle */
+        .trust-row {
             display: flex;
             justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
             flex-wrap: wrap;
-            gap: var(--space-lg);
-            margin-top: var(--space-lg);
         }
 
-        .cred-item {
-            background: var(--glass-secondary);
-            backdrop-filter: var(--glass-blur-medium);
-            border: 1px solid var(--glass-border-soft);
-            border-radius: 20px;
-            padding: var(--space-sm) var(--space-md);
-            font-family: var(--font-accent);
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.9rem;
-            color: var(--sage-deep);
-            font-weight: 500;
+            color: var(--text-secondary);
+            background: var(--glass-white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-glass);
         }
 
-        /* Revolutionary Support Panel */
-        .support-panel {
-            max-width: 900px;
-            margin: var(--space-3xl) auto;
-            padding: 0 var(--space-lg);
+        /* How It Works - Gentle Explanation */
+        .how-it-works {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .support-grid {
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .how-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-xl);
-            margin-bottom: var(--space-3xl);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .how-step {
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .how-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-float);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .gentle-note {
+            background: var(--glass-terracotta);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            border: 1px solid var(--border-glass);
+        }
+
+        /* Support Options - Calm Tabs */
+        .support-section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            background: var(--glass-white);
+            border-radius: 25px;
+            padding: 0.5rem;
+            border: 1px solid var(--border-glass);
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: var(--earth-brown);
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: var(--glass-terracotta);
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2.5rem;
+            min-height: 400px;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tab-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
         }
 
         .support-card {
-            background: var(--glass-primary);
-            backdrop-filter: var(--glass-blur-strong);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: var(--space-2xl);
+            background: var(--glass-terracotta);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1.5rem;
             text-align: center;
-            transition: var(--transition-glass);
-            box-shadow: var(--shadow-glass);
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .support-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: var(--transition-smooth);
-        }
-
-        .support-card:hover::before {
-            left: 100%;
-            transition: all 0.6s ease;
+            transition: all 0.3s ease;
         }
 
         .support-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-floating);
-            background: var(--glass-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
         }
 
-        .support-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto var(--space-lg);
-            background: linear-gradient(135deg, var(--sage-deep), var(--trusted-blue));
-            border-radius: 50%;
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Chat Interface - Mobile-like */
+        .chat-container {
+            background: var(--glass-white);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            max-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            box-shadow: var(--shadow-depth);
-            position: relative;
-            z-index: 2;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-glass);
+            margin-bottom: 1rem;
         }
 
-        .support-title {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--sage-deep);
-            margin-bottom: var(--space-sm);
-            position: relative;
-            z-index: 2;
+        .esperanza-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--earth-brown);
         }
 
-        .support-description {
-            color: var(--gray-warm);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: var(--space-lg);
-            position: relative;
-            z-index: 2;
+        .chat-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
         }
 
-        .support-button {
-            background: linear-gradient(135deg, var(--sage-deep), var(--trusted-blue));
-            color: white;
-            border: none;
-            padding: var(--space-md) var(--space-xl);
-            border-radius: 20px;
-            font-family: var(--font-accent);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            box-shadow: var(--shadow-depth);
-            position: relative;
-            z-index: 2;
-        }
-
-        .support-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-premium);
-        }
-
-        /* Premium Chat Container */
-        .chat-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg) var(--space-3xl);
-            min-height: 60vh;
+        .chat-status {
+            font-size: 0.85rem;
+            color: var(--text-muted);
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .chat-wrapper {
-            background: var(--glass-primary);
-            backdrop-filter: var(--glass-blur-strong);
-            border: 1px solid var(--glass-border);
-            border-radius: 32px;
-            padding: var(--space-2xl);
-            box-shadow: var(--shadow-premium);
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--warm-support);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
-        /* Premium Chat Messages */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         .chat-messages {
-            flex-grow: 1;
-            margin-bottom: var(--space-xl);
-            min-height: 400px;
+            flex: 1;
             overflow-y: auto;
-            padding-right: var(--space-sm);
+            margin-bottom: 1rem;
         }
 
-        .chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .chat-messages::-webkit-scrollbar-track {
-            background: var(--glass-tertiary);
-            border-radius: 10px;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: var(--sage-medium);
-            border-radius: 10px;
-        }
-
-        .message {
-            margin-bottom: var(--space-xl);
-            opacity: 0;
-            animation: messageSlideIn 0.6s ease forwards;
-        }
-
-        .message.user {
-            text-align: right;
-        }
-
-        .message.assistant {
-            text-align: left;
-        }
-
-        .message-wrapper {
-            display: inline-flex;
-            align-items: flex-start;
-            gap: var(--space-md);
+        .chat-message {
+            background: var(--glass-terracotta);
+            border-radius: 18px 18px 4px 18px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-glass);
             max-width: 85%;
         }
 
-        .message.user .message-wrapper {
-            flex-direction: row-reverse;
-        }
-
-        .avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
+        .chat-input-area {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-            box-shadow: var(--shadow-depth);
-        }
-
-        .avatar.user {
-            background: linear-gradient(135deg, var(--warm-terracotta), var(--trusted-blue));
-            color: white;
-        }
-
-        .avatar.esperanza {
-            background: linear-gradient(135deg, var(--sage-deep), var(--trusted-blue));
-            color: white;
-        }
-
-        .message-content {
-            background: var(--glass-secondary);
-            backdrop-filter: var(--glass-blur-medium);
-            border: 1px solid var(--glass-border-soft);
-            padding: var(--space-lg) var(--space-xl);
-            border-radius: 24px;
-            font-size: 1rem;
-            line-height: 1.7;
-            box-shadow: var(--shadow-glass);
-            position: relative;
-        }
-
-        .message.user .message-content {
-            background: linear-gradient(135deg, var(--sage-deep), var(--trusted-blue));
-            color: white;
-            border-bottom-right-radius: 8px;
-        }
-
-        .message.assistant .message-content {
-            background: var(--white-pure);
-            color: #1f2937;
-            border-bottom-left-radius: 8px;
-        }
-
-        @keyframes messageSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Premium Input System */
-        .chat-input-system {
-            background: var(--glass-secondary);
-            backdrop-filter: var(--glass-blur-medium);
-            border: 2px solid var(--glass-border);
-            border-radius: 28px;
-            padding: var(--space-md);
-            display: flex;
-            gap: var(--space-md);
+            gap: 0.75rem;
             align-items: flex-end;
-            box-shadow: var(--shadow-glass);
-            transition: var(--transition-smooth);
-        }
-
-        .chat-input-system:focus-within {
-            border-color: var(--sage-deep);
-            box-shadow: var(--shadow-premium);
-            background: var(--glass-primary);
         }
 
         .chat-input {
-            flex-grow: 1;
-            border: none;
-            outline: none;
-            font-size: 1rem;
-            font-family: var(--font-body);
-            padding: var(--space-md);
+            flex: 1;
+            background: var(--glass-white);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: var(--text-primary);
             resize: none;
-            min-height: 24px;
+            min-height: 44px;
             max-height: 120px;
-            line-height: 1.6;
-            background: transparent;
-            color: #1f2937;
         }
 
-        .chat-input::placeholder {
-            color: var(--gray-warm);
-            opacity: 0.7;
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--earth-brown);
+            box-shadow: 0 0 0 3px rgba(139, 111, 71, 0.1);
         }
 
-        .send-button {
-            background: linear-gradient(135deg, var(--sage-deep), var(--trusted-blue));
-            color: white;
+        .chat-send {
+            background: var(--earth-brown);
             border: none;
             border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            box-shadow: var(--shadow-depth);
-            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
 
-        .send-button:hover {
+        .chat-send:hover {
             transform: scale(1.05);
-            box-shadow: var(--shadow-premium);
         }
 
-        .send-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Premium Typing Indicator */
-        .typing-indicator {
-            display: none;
-            align-items: center;
-            gap: var(--space-md);
-            padding: var(--space-lg);
-            margin-bottom: var(--space-md);
-        }
-
-        .typing-content {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            background: var(--glass-secondary);
-            backdrop-filter: var(--glass-blur-medium);
-            border: 1px solid var(--glass-border-soft);
-            padding: var(--space-md) var(--space-lg);
-            border-radius: 20px;
-            box-shadow: var(--shadow-glass);
-        }
-
-        .typing-text {
-            font-style: italic;
-            color: var(--sage-deep);
-            font-weight: 500;
-        }
-
-        .typing-dots {
-            display: flex;
-            gap: 4px;
-        }
-
-        .typing-dots span {
-            width: 6px;
-            height: 6px;
-            background: var(--sage-deep);
-            border-radius: 50%;
-            animation: typingBounce 1.4s infinite;
-        }
-
-        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes typingBounce {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-8px); }
-        }
-
-        /* Emergency Resources */
-        .emergency-section {
-            background: var(--glass-primary);
-            backdrop-filter: var(--glass-blur-strong);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: var(--space-2xl);
-            margin-top: var(--space-2xl);
-            text-align: center;
-        }
-
-        .emergency-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--sage-deep);
-            margin-bottom: var(--space-md);
-        }
-
-        .emergency-subtitle {
-            color: var(--gray-warm);
-            margin-bottom: var(--space-xl);
-        }
-
-        .emergency-contacts {
+        /* Resource Section */
+        .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: var(--space-lg);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
-        .emergency-contact {
-            background: var(--glass-secondary);
-            backdrop-filter: var(--glass-blur-medium);
-            border: 1px solid var(--glass-border-soft);
+        .resource-card {
+            background: var(--glass-white);
+            border: 1px solid var(--border-glass);
             border-radius: 16px;
-            padding: var(--space-lg);
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition-smooth);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
         }
 
-        .emergency-contact:hover {
+        .resource-card:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-depth);
+            box-shadow: var(--shadow-soft);
         }
 
-        .emergency-contact h4 {
-            font-family: var(--font-accent);
+        .resource-title {
             font-size: 1.1rem;
-            color: var(--sage-deep);
-            margin-bottom: var(--space-sm);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
 
-        .disclaimer {
-            background: var(--glass-secondary);
-            backdrop-filter: var(--glass-blur-medium);
-            border: 1px solid var(--glass-border-soft);
-            border-radius: 16px;
-            padding: var(--space-lg);
-            margin-top: var(--space-2xl);
+        .resource-description {
             font-size: 0.9rem;
-            color: var(--gray-warm);
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .resource-contact {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding: 0.5rem;
+            background: var(--glass-terracotta);
+            border-radius: 8px;
+        }
+
+        /* Footer - Gentle */
+        .footer {
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-glass);
+            border-top: 1px solid var(--border-glass);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        /* Revolutionary Responsive Design */
+        .footer-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Mobile Optimizations */
         @media (max-width: 768px) {
-            .brand-title {
-                font-size: 2rem;
-            }
-            
-            .brand-subtitle {
-                font-size: 1rem;
-            }
-            
-            .logo-container {
-                flex-direction: column;
-                gap: var(--space-md);
-            }
-            
-            .brand-content {
-                text-align: center;
-            }
-            
-            .support-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-lg);
-            }
-            
-            .support-card {
-                padding: var(--space-xl);
-            }
-            
-            .chat-container {
-                padding: 0 var(--space-md) var(--space-2xl);
-            }
-            
-            .chat-wrapper {
-                padding: var(--space-lg);
-                border-radius: 24px;
-            }
-            
-            .message-content {
-                max-width: 95%;
-                font-size: 0.95rem;
-                padding: var(--space-md) var(--space-lg);
+            .hero {
+                padding: 2rem 1rem;
+                min-height: 70vh;
             }
 
-            .credentials-banner {
+            .how-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .tab-navigation {
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+
+            .tab-content {
+                padding: 2rem;
+            }
+
+            .trust-row {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
             }
 
-            .emergency-contacts {
-                grid-template-columns: 1fr;
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
         }
 
-        /* Accessibility & Focus States */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 1.5rem 1rem;
+            }
+
+            .how-it-works,
+            .support-section {
+                padding: 3rem 1rem;
+            }
+
+            .tab-content {
+                padding: 1.5rem;
+            }
+
+            .chat-container {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .tab-btn:focus,
         .support-card:focus,
-        .support-button:focus,
-        .send-button:focus,
-        .chat-input:focus {
-            outline: 2px solid var(--sage-deep);
+        .chat-send:focus {
+            outline: 2px solid var(--earth-brown);
             outline-offset: 2px;
-        }
-
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
         }
     </style>
 </head>
 <body>
+    <!-- Gentle Header -->
     <header class="header">
-        <div class="header-content">
-            <div class="logo-container">
-                <div class="logo-icon">🌅</div>
-                <div class="brand-content">
-                    <h1 class="brand-title">Esperanza</h1>
-                    <p class="brand-subtitle">Immigration Rights Coach & Advocate</p>
-                </div>
+        <div class="nav-container">
+            <div class="logo">
+                🌿 Esperanza
             </div>
-            <div class="professional-badge">
-                <span class="status-pulse"></span>
-                Esperanza Morales-Santos • Available 24/7
+            <div class="privacy-badge">
+                🔒 Private & Safe
             </div>
-            <p class="tagline">
-                Immigration rights education and advocacy with lived experience in mixed-status families. 
-                I understand your journey and I'm here to help you navigate it with dignity and confidence.
-            </p>
-            <div class="credentials-banner">
-                <div class="cred-item">🏠 Mixed-Status Family Background</div>
-                <div class="cred-item">📚 Community Rights Educator</div>
-                <div class="cred-item">🤝 Bilingual Support</div>
-                <div class="cred-item">🌟 Trauma-Informed Approach</div>
+            <div class="language-toggle">
+                🌐 Español
             </div>
         </div>
     </header>
 
-    <main class="support-panel">
-        <div class="support-grid">
-            <div class="support-card" onclick="startSupportChat('urgent_help')" tabindex="0">
-                <div class="support-icon">🆘</div>
-                <h2 class="support-title">I Need Help Now</h2>
-                <p class="support-description">Immediate support for urgent situations - I'll help you understand your rights and next steps</p>
-                <button class="support-button">Talk to Esperanza</button>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="credentials-badge">Immigration Justice Advocate • JD/MSW • 18+ Years Experience</div>
             
-            <div class="support-card" onclick="startSupportChat('have_questions')" tabindex="0">
-                <div class="support-icon">💬</div>
-                <h2 class="support-title">I Have Questions</h2>
-                <p class="support-description">Learn about your rights, get resource recommendations, and navigate your options</p>
-                <button class="support-button">Ask Esperanza</button>
-            </div>
+            <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=300&h=300&fit=crop&crop=face" 
+                 alt="Esperanza Morales-Santos" class="hero-photo">
             
-            <div class="support-card" onclick="startSupportChat('need_resources')" tabindex="0">
-                <div class="support-icon">🔍</div>
-                <h2 class="support-title">Find Resources</h2>
-                <p class="support-description">Community support, legal aid, emergency assistance, and local resources</p>
-                <button class="support-button">Get Resources</button>
+            <h1 class="hero-title">Esperanza Morales-Santos</h1>
+            <div class="hero-subtitle">Immigration Support & Rights Education</div>
+            <div class="hero-experience">Current with 2025 Policy Changes</div>
+            
+            <p class="hero-description">
+                A safe space for immigrant families to understand their rights, find support, and navigate current challenges with dignity and hope.
+            </p>
+
+            <div class="trust-row">
+                <div class="trust-item">
+                    <span>✨</span> No registration required
+                </div>
+                <div class="trust-item">
+                    <span>🛡️</span> Rights education focus
+                </div>
+                <div class="trust-item">
+                    <span>🤝</span> Community connections
+                </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <div class="chat-container">
-        <div class="chat-wrapper">
-            <div class="chat-messages" id="chatMessages">
-                <div class="message assistant">
-                    <div class="message-wrapper">
-                        <div class="avatar esperanza">🌅</div>
-                        <div class="message-content">
-                            ¡Hola! I'm Esperanza Morales-Santos, and I grew up in a mixed-status family just like many of you. I know what it's like to live with uncertainty about your family's future.
-                            <br><br>
-                            I've dedicated my life to helping families understand their rights and navigate the immigration system. I provide education, advocacy, and connect you with trusted resources in your community.
-                            <br><br>
-                            <strong>What's going on with your situation? I'm here to help you understand your options.</strong>
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2 class="section-title">How I Support You</h2>
+        
+        <div class="how-steps">
+            <div class="how-step">
+                <span class="step-icon">💬</span>
+                <h3 class="step-title">Share What's Happening</h3>
+                <p class="step-description">
+                    Tell me about your situation - no personal details needed. Just what you're experiencing or worried about.
+                </p>
+            </div>
+            
+            <div class="how-step">
+                <span class="step-icon">🛡️</span>
+                <h3 class="step-title">Understand Your Rights</h3>
+                <p class="step-description">
+                    I'll explain your current protections and options based on what's happening in 2025, in clear language.
+                </p>
+            </div>
+            
+            <div class="how-step">
+                <span class="step-icon">🌐</span>
+                <h3 class="step-title">Connect to Support</h3>
+                <p class="step-description">
+                    When you need additional help, I'll connect you with trusted organizations and legal resources in your area.
+                </p>
+            </div>
+        </div>
+
+        <div class="gentle-note">
+            💕 This is education and crisis support - not legal advice. For complex legal cases, I'll help you find qualified attorneys.
+        </div>
+    </section>
+
+    <!-- Support Options -->
+    <section class="support-section">
+        <h2 class="section-title">How Can I Help You Today?</h2>
+        
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="showTab('rights')">Know Your Rights</button>
+            <button class="tab-btn" onclick="showTab('support')">Find Support</button>
+            <button class="tab-btn" onclick="showTab('chat')">Talk with Me</button>
+        </div>
+
+        <!-- Rights Tab -->
+        <div class="tab-content active" id="rights-tab">
+            <h3 class="tab-title">🛡️ Understanding Your Rights</h3>
+            <p class="tab-description">
+                Current protections and guidance based on 2025 policies. Knowledge is power, and you have more rights than you might think.
+            </p>
+            
+            <div class="support-options">
+                <div class="support-card" onclick="startChat('home-visits')">
+                    <span class="card-icon">🏠</span>
+                    <h4 class="card-title">If Someone Comes to Your Home</h4>
+                    <p class="card-description">What to do, what to say, and what your rights are</p>
+                </div>
+                
+                <div class="support-card" onclick="startChat('work-concerns')">
+                    <span class="card-icon">💼</span>
+                    <h4 class="card-title">Workplace Concerns</h4>
+                    <p class="card-description">Your rights at work and how to protect yourself</p>
+                </div>
+                
+                <div class="support-card" onclick="startChat('family-safety')">
+                    <span class="card-icon">👨‍👩‍👧‍👦</span>
+                    <h4 class="card-title">Protecting Your Family</h4>
+                    <p class="card-description">Emergency planning and keeping families together</p>
+                </div>
+                
+                <div class="support-card" onclick="startChat('daily-life')">
+                    <span class="card-icon">🚗</span>
+                    <h4 class="card-title">Daily Life Safety</h4>
+                    <p class="card-description">School, healthcare, driving, and community activities</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support Tab -->
+        <div class="tab-content" id="support-tab">
+            <h3 class="tab-title">🤝 Find Local Support</h3>
+            <p class="tab-description">
+                Connect with trusted organizations, legal aid, and community resources that understand your situation.
+            </p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h4 class="resource-title">Legal Aid Organizations</h4>
+                    <p class="resource-description">Free and low-cost legal help for immigration matters</p>
+                    <div class="resource-contact">I can help you find local options</div>
+                </div>
+                
+                <div class="resource-card">
+                    <h4 class="resource-title">Community Organizations</h4>
+                    <p class="resource-description">Local groups providing support, resources, and advocacy</p>
+                    <div class="resource-contact">Area-specific connections available</div>
+                </div>
+                
+                <div class="resource-card">
+                    <h4 class="resource-title">Emergency Support</h4>
+                    <p class="resource-description">Crisis hotlines and immediate assistance programs</p>
+                    <div class="resource-contact">National Immigration Legal Helpline: 1-855-643-5297</div>
+                </div>
+                
+                <div class="resource-card">
+                    <h4 class="resource-title">Know Your Rights Workshops</h4>
+                    <p class="resource-description">Community education and empowerment sessions</p>
+                    <div class="resource-contact">Local workshop schedules available</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Tab -->
+        <div class="tab-content" id="chat-tab">
+            <h3 class="tab-title">💬 Talk with Esperanza</h3>
+            <p class="tab-description">
+                Ask me anything about your situation. I'm here to listen, provide guidance, and connect you with resources when you need them.
+            </p>
+            
+            <div class="chat-container">
+                <div class="chat-header">
+                    <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=100&h=100&fit=crop&crop=face" 
+                         alt="Esperanza" class="esperanza-avatar">
+                    <div class="chat-info">
+                        <h4>Esperanza</h4>
+                        <div class="chat-status">
+                            <span class="status-dot"></span>
+                            Here to support you
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="typing-indicator" id="typingIndicator">
-                <div class="avatar esperanza">🌅</div>
-                <div class="typing-content">
-                    <span class="typing-text">Esperanza is researching resources</span>
-                    <div class="typing-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message">
+                        Hello, and welcome to this safe space. I understand that reaching out can feel scary, especially right now. I'm here to help you understand your rights and find support, with no judgment and complete privacy. What's on your mind today? 💙
                     </div>
                 </div>
-            </div>
-
-            <div class="chat-input-system">
-                <textarea 
-                    class="chat-input" 
-                    id="chatInput" 
-                    placeholder="Tell me about your situation or ask about your rights..."
-                    rows="1"
-                    aria-label="Chat with Esperanza"
-                ></textarea>
-                <button class="send-button" id="sendButton" aria-label="Send message">
-                    ➤
-                </button>
+                
+                <div class="chat-input-area">
+                    <textarea class="chat-input" id="chatInput" 
+                              placeholder="Share what's on your mind..."
+                              rows="1"></textarea>
+                    <button class="chat-send" onclick="sendMessage()" aria-label="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Emergency Resources -->
-        <section class="emergency-section">
-            <h3 class="emergency-title">If You Need Immediate Legal Help</h3>
-            <p class="emergency-subtitle">These trusted organizations provide professional legal assistance:</p>
-            
-            <div class="emergency-contacts">
-                <a href="tel:8555643529" class="emergency-contact">
-                    <h4>⚖️ Legal Helpline</h4>
-                    <p>National Immigration Legal Services<br>1-855-NIF-LAWS</p>
-                </a>
-                <a href="tel:911" class="emergency-contact">
-                    <h4>🚨 Emergency Services</h4>
-                    <p>Life-threatening situations<br>911</p>
-                </a>
-                <a href="tel:8446733423" class="emergency-contact">
-                    <h4>📞 Rapid Response</h4>
-                    <p>ICE Raid Support<br>1-844-FreeICE</p>
-                </a>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-quote">
+                "Every person deserves dignity, safety, and the opportunity to build a better life for their family."
             </div>
-        </section>
-
-        <div class="disclaimer">
-            <strong>Important:</strong> I provide educational support and advocacy, not legal advice. For legal representation, please contact a licensed attorney through the resources above.
+            <div class="footer-disclaimer">
+                This tool provides education and crisis support. For legal representation in complex cases, 
+                I'll help connect you with qualified immigration attorneys. Your privacy and safety are protected - 
+                no personal information is collected or stored.
+            </div>
         </div>
-    </div>
+    </footer>
 
     <script>
-        // Enhanced chat functionality
-        let conversationHistory = [];
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
 
-        // DOM elements
-        const chatInput = document.getElementById('chatInput');
-        const sendButton = document.getElementById('sendButton');
-        const chatMessages = document.getElementById('chatMessages');
-        const typingIndicator = document.getElementById('typingIndicator');
+        // Chat functionality
+    // Chat functionality - COMPLETE VERSION
+async function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const messagesContainer = document.getElementById('chatMessages');
+    const message = input.value.trim();
 
-        // Auto-resize textarea
-        chatInput.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+    if (!message) return;
+
+    // Add user message
+    const userMessage = document.createElement('div');
+    userMessage.style.cssText = `
+        background: var(--earth-brown);
+        color: white;
+        border-radius: 18px 18px 18px 4px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1rem;
+        margin-left: auto;
+        max-width: 85%;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    `;
+    userMessage.textContent = message;
+    messagesContainer.appendChild(userMessage);
+
+    // Clear input
+    input.value = '';
+    input.style.height = 'auto';
+
+    // Show typing indicator
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'chat-message';
+    typingIndicator.innerHTML = '💭 Esperanza is thinking...';
+    messagesContainer.appendChild(typingIndicator);
+
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    try {
+        const response = await fetch('/.netlify/functions/esperanza', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
         });
 
-        // Enhanced send message with premium feedback
-        async function sendMessage() {
-            const message = chatInput.value.trim();
-            if (!message) return;
-
-            // Visual feedback
-            sendButton.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                sendButton.style.transform = '';
-            }, 150);
-
-            // Add user message
-            addMessage(message, 'user');
-            chatInput.value = '';
-            chatInput.style.height = 'auto';
-
-            // Show typing indicator
-            showTyping();
-
-            try {
-                const response = await fetch('/.netlify/functions/esperanza', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        message,
-                        conversation_history: conversationHistory 
-                    })
-                });
-
-                const data = await response.json();
-                
-                hideTyping();
-                
-                // Add response with slight delay for better UX
-                setTimeout(() => {
-                    addMessage(data.response || 'I apologize, I\'m having trouble responding right now. For immediate help, please call the National Immigration Legal Helpline: 1-855-NIF-LAWS', 'assistant');
-                }, 300);
-                
-            } catch (error) {
-                hideTyping();
-                setTimeout(() => {
-                    addMessage('I\'m having connection issues right now. Your situation is important - please call the National Immigration Legal Helpline: 1-855-NIF-LAWS for immediate assistance.', 'assistant');
-                }, 300);
-            }
-        }
-
-        function addMessage(content, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}`;
-            
-            const avatarClass = sender === 'user' ? 'user' : 'esperanza';
-            const avatarIcon = sender === 'user' ? '👤' : '🌅';
-            
-            messageDiv.innerHTML = `
-                <div class="message-wrapper">
-                    <div class="avatar ${avatarClass}">${avatarIcon}</div>
-                    <div class="message-content">${content}</div>
-                </div>
-            `;
-            
-            chatMessages.appendChild(messageDiv);
-            
-            // Smooth scroll
-            setTimeout(() => {
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 100);
-
-            // Update conversation history
-            conversationHistory.push({ 
-                role: sender === 'user' ? 'user' : 'assistant', 
-                content 
-            });
-        }
-
-        function showTyping() {
-            typingIndicator.style.display = 'flex';
-            setTimeout(() => {
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 100);
-        }
-
-        function hideTyping() {
-            typingIndicator.style.display = 'none';
-        }
-
-        // Support chat starters
-        function startSupportChat(type) {
-            let message = '';
-            switch(type) {
-                case 'urgent_help':
-                    message = 'I need help with something urgent happening right now. Can you help me understand my rights and what I should do?';
-                    break;
-                case 'have_questions':
-                    message = 'I have questions about my immigration situation and want to understand my options better.';
-                    break;
-                case 'need_resources':
-                    message = 'I need help finding resources in my area - things like legal aid, community support, or emergency assistance.';
-                    break;
-            }
-            
-            chatInput.value = message;
-            setTimeout(() => {
-                sendMessage();
-            }, 100);
-        }
-
-        // Event listeners
-        sendButton.addEventListener('click', sendMessage);
+        const data = await response.json();
         
-        chatInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
+        // Remove typing indicator
+        typingIndicator.remove();
+        
+        // Show Esperanza's response
+        const responseMessage = document.createElement('div');
+        responseMessage.className = 'chat-message';
+        responseMessage.innerHTML = data.response || "I'm having trouble connecting right now. For immediate help, please call the National Immigration Legal Helpline: 1-855-NIF-LAWS";
+        messagesContainer.appendChild(responseMessage);
+        
+    } catch (error) {
+        // Remove typing indicator
+        typingIndicator.remove();
+        
+        // Show error message
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'chat-message';
+        errorMessage.innerHTML = "I'm having connection issues right now. For immediate assistance, please call the National Immigration Legal Helpline: 1-855-NIF-LAWS";
+        messagesContainer.appendChild(errorMessage);
+    }
 
-        // Input state management
-        chatInput.addEventListener('input', function() {
-            sendButton.disabled = !this.value.trim();
-            sendButton.style.opacity = this.value.trim() ? '1' : '0.5';
-        });
-
-        // Keyboard navigation for support cards
-        document.querySelectorAll('.support-card').forEach(card => {
-            card.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-            });
-        });
-
-        // Initialize
-        sendButton.disabled = true;
-        sendButton.style.opacity = '0.5';
-
-        // Focus management
-        chatInput.addEventListener('focus', function() {
-            this.parentElement.style.transform = 'scale(1.01)';
-        });
-
-        chatInput.addEventListener('blur', function() {
-            this.parentElement.style.transform = 'scale(1)';
-        });
-
-        // Smooth scroll behavior
-        let isScrolling = false;
-        chatMessages.addEventListener('scroll', function() {
-            if (!isScrolling) {
-                isScrolling = true;
-                this.style.scrollBehavior = 'smooth';
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 150);
-            }
-        });
-
-        // Window resize handling
-        window.addEventListener('resize', function() {
-            setTimeout(() => {
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 100);
-        });
-
-        // Loading state
-        window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.6s ease';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
     </script>
-</body>
-</html>
