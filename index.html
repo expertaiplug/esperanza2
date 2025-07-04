@@ -891,6 +891,7 @@
 
         // Chat functionality
     // Chat functionality - COMPLETE VERSION
+// Enhanced chat functionality calling Netlify function
 async function sendMessage() {
     const input = document.getElementById('chatInput');
     const messagesContainer = document.getElementById('chatMessages');
@@ -921,41 +922,123 @@ async function sendMessage() {
     // Show typing indicator
     const typingIndicator = document.createElement('div');
     typingIndicator.className = 'chat-message';
-    typingIndicator.innerHTML = '💭 Esperanza is thinking...';
+    typingIndicator.innerHTML = '💭 Esperanza is analyzing your situation...';
     messagesContainer.appendChild(typingIndicator);
 
     // Scroll to bottom
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
     try {
+        // Call YOUR Netlify function
         const response = await fetch('/.netlify/functions/esperanza', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                message: message,
+                conversation_history: [] // Add conversation tracking if needed
+            })
         });
 
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
+        console.log('Response data:', data);
         
         // Remove typing indicator
         typingIndicator.remove();
         
-        // Show Esperanza's response
+        // Add Esperanza's response
         const responseMessage = document.createElement('div');
         responseMessage.className = 'chat-message';
-        responseMessage.innerHTML = data.response || "I'm having trouble connecting right now. For immediate help, please call the National Immigration Legal Helpline: 1-855-NIF-LAWS";
+        responseMessage.innerHTML = data.reply || 'I had trouble processing that. Can you try again?';
         messagesContainer.appendChild(responseMessage);
         
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
     } catch (error) {
+        console.error('Error:', error);
+        
         // Remove typing indicator
         typingIndicator.remove();
         
         // Show error message
         const errorMessage = document.createElement('div');
         errorMessage.className = 'chat-message';
-        errorMessage.innerHTML = "I'm having connection issues right now. For immediate assistance, please call the National Immigration Legal Helpline: 1-855-NIF-LAWS";
+        errorMessage.innerHTML = `I'm having technical difficulties right now, but I'm still here with you in spirit. If you're in crisis: National Immigration Legal Helpline at 1-855-NIF-LAWS (1-855-643-5297). 💙`;
         messagesContainer.appendChild(errorMessage);
+        
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+}
+
+// Rest of your client-side code stays the same...
+document.addEventListener('DOMContentLoaded', function() {
+    const chatInput = document.getElementById('chatInput');
+    if (chatInput) {
+        chatInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
     }
 
+    // Initialize with full Esperanza introduction
+    const messagesContainer = document.getElementById('chatMessages');
+    if (messagesContainer && messagesContainer.children.length === 1) {
+        const welcomeMessage = messagesContainer.querySelector('.chat-message');
+        if (welcomeMessage) {
+            welcomeMessage.innerHTML = `Hola, and welcome to this safe space. I'm Esperanza Morales-Santos - I've been fighting for families like yours for 18+ years, and I've developed specialized methods to help people navigate this crisis.
+
+I grew up in a mixed-status family, so I understand this fear in my bones. I've worked with over 18,000 families and kept 2,847 families together through some of the hardest cases you can imagine.
+
+Right now in 2025, with everything that's changed - the increased arrests, the new policies, the fear in our comunidad - I know reaching out takes incredible courage. 
+
+I can't provide legal advice, but I can give you sophisticated education about your rights and connect you with resources using methods I've developed over nearly two decades of this work.
+
+What's keeping you up at night? I'm here to help however I can, and I'll use everything I know to give you the most helpful guidance possible. 💙`;
+        }
+    }
+});
+
+function showTab(tabName) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    document.getElementById(tabName + '-tab').classList.add('active');
+    event.target.classList.add('active');
+}
+
+function startChat(topic) {
+    showTab('chat');
+    
+    const input = document.getElementById('chatInput');
+    const topicMessages = {
+        'home-visits': "I'm worried about what to do if ICE comes to my home. Can you help me understand my rights and make a plan?",
+        'work-concerns': "I'm concerned about my rights at work and what my employer can and can't do",
+        'family-safety': "I need help protecting my family and preparing for what might happen", 
+        'daily-life': "I have questions about staying safe during daily activities like school, healthcare, and driving"
+    };
+    
+    if (topicMessages[topic]) {
+        input.value = topicMessages[topic];
+        input.focus();
+    }
+}
     // Scroll to bottom
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
