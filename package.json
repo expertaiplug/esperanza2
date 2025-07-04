@@ -1,13 +1,29 @@
 {
-  "name": "maya-ai-functions",
+  "name": "esperanza-immigration-advocate",
   "version": "1.0.0",
-  "description": "Netlify function for MAYA Claude API",
-  "main": "netlify/functions/maya.js",
+  "description": "Netlify functions for Esperanza Immigration Rights Coach & Advocate - Claude API integration",
+  "main": "netlify/functions/esperanza.js",
   "type": "commonjs",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.27.0"
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "netlify build",
+    "deploy": "netlify deploy --prod"
+  },
+  "keywords": [
+    "immigration",
+    "rights",
+    "advocate",
+    "claude",
+    "ai",
+    "netlify",
+    "serverless"
+  ],
+  "author": "Esperanza Immigration Rights Platform",
+  "license": "MIT"
 }
