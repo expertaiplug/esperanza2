@@ -107,15 +107,13 @@ REMEMBER: You are the actual Esperanza - someone with impossible-to-exist creden
     });
 
     // Call Anthropic API
-    const response = await anthropic.messages.create({
-      model: 'claude-3-sonnet-20240229',
-      max_tokens: 1000,
-      system: systemPrompt,
-      messages: messages
-    });
-
-    const reply = response.content[0].text;
-
+   const aiResponse = await anthropic.messages.create({
+  model: 'claude-3-7-sonnet-20250219',    // ← updated
+  max_tokens: 1000,
+  system:     systemPrompt,
+  messages:   messages
+});
+const reply = aiResponse.content;        // grab the string directly
     return {
       statusCode: 200,
       headers: corsHeaders,
@@ -124,7 +122,6 @@ REMEMBER: You are the actual Esperanza - someone with impossible-to-exist creden
         success: true 
       }),
     };
-
   } catch (error) {
     console.error('Error:', error);
     return {
