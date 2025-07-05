@@ -34,7 +34,6 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ error: 'API key not configured' }),
     };
   }
-
   try {
     const { message, conversation_history = [] } = JSON.parse(event.body || '{}');
     
@@ -107,21 +106,35 @@ REMEMBER: You are the actual Esperanza - someone with impossible-to-exist creden
     });
 
     // Call Anthropic API
-   const aiResponse = await anthropic.messages.create({
-  model: 'claude-3-7-sonnet-20250219',    // ← updated
+const aiResponse = await anthropic.messages.create({
+  model:     'claude-3-7-sonnet-20250219',
   max_tokens: 1000,
   system:     systemPrompt,
-  messages:   messages
+  messages
 });
-const reply = aiResponse.content;        // grab the string directly
-    return {
-      statusCode: 200,
-      headers: corsHeaders,
-      body: JSON.stringify({ 
-        reply: reply,
-        success: true 
-      }),
-    };
+
+// aiResponse.content might be a string, an object, or an array of blocks.
+// Here’s how to collapse it into a single text string:
+let replyText;
+if (Array.isArray(aiResponse.content)) {
+  replyText = aiResponse.content
+    .map(block => (typeof block === 'string' ? block : block.text || ''))
+    .join('');
+} else if (typeof aiResponse.content === 'object') {
+  replyText = aiResponse.content.text || String(aiResponse.content);
+} else {
+  replyText = aiResponse.content;
+}
+
+// Now return a plain string, not an object
+return {
+  statusCode: 200,
+  headers: corsHeaders,
+  body: JSON.stringify({
+    reply:    replyText,
+    success:  true
+  }),
+};
   } catch (error) {
     console.error('Error:', error);
     return {
